@@ -15,9 +15,9 @@ namespace PenzugySzovetseg.aje {
     protected void LoginButton_Click(object sender, EventArgs e) {
       // Three valid username/password pairs: Scott/password, Jisun/password, and Sam/password.
       string[] users = { "szovetseg", "baden", "basel", "bern", "luzern", "stgallen", "zurich", "mtunde",
-        "dnelli", "herika", "mkrisztina", "sztibor", "vnagnes" };
+        "dnelli", "herika", "mkrisztina", "sztibor", "vnagnes" , "gxenia" };
       string[] passwords = { "Sz0vets3g$!4512", "b@d3n36$34", "b@s3l35$3", "b3rnpe453$1", "l8z3rn6$42", "stg@ll3n$2432", "z8r1ch983$2", "m8u7!4d$3",
-        "DybZ8b6JsXKWV%jT", "HENX277zzLkqsLfga", "M9Ue!bAg-H8jCXtyv", "SQ5U8KwMSpr&zfqz9", "VBUF4msep3H!wMm3X"};
+        "DybZ8b6JsXKWV%jT", "HENX277zzLkqsLfga", "M9Ue!bAg-H8jCXtyv", "SQ5U8KwMSpr&zfqz9", "VBUF4msep3H!wMm3X", "JVi37g5ALsPQAnFE4dcx"};
       for (int i = 0; i < users.Length; i++) {
         bool validUsername = (string.Compare(UserName.Text, users[i], true) == 0);
         bool validPassword = (string.Compare(Password.Text, passwords[i], false) == 0);
