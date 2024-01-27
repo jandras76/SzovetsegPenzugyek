@@ -23,7 +23,7 @@ namespace PenzugySzovetseg.aje {
 
     public static List<int> Evek {
       get {
-        return new List<int>() { 2016, 2017, 2018, 2019, 2020, 2021 };
+        return new List<int>() { 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
       }
     }
 
