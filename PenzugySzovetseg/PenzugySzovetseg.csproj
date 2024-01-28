@@ -448,6 +448,7 @@
     <Compile Include="aje\Lelkeszek.aspx.designer.cs">
       <DependentUpon>Lelkeszek.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aje\Model.cs" />
     <Compile Include="aje\Nyomtatas.cs" />
     <Compile Include="aje\RiportLekerdezesek.cs" />
     <Compile Include="aje\SqlLiteAccess.cs" />

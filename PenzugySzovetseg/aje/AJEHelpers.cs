@@ -21,11 +21,11 @@ namespace PenzugySzovetseg.aje {
       return userFilter;
     }
 
-    public static List<int> Evek {
-      get {
-        return new List<int>() { 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
-      }
-    }
+    //public static List<AJEYear> Evek {
+    //  get {
+    //    return new List<AJEYear>() { 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
+    //  }
+    //}
 
     // function that creates an object from the given data row
     public static T CreateItemFromRow<T>(this DataRow row) where T : new() {

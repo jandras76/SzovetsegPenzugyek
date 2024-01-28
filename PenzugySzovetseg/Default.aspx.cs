@@ -72,17 +72,11 @@ namespace PenzugySzovetseg {
 
     }
 
-    protected void chb_OnDataBinding(object sender, EventArgs e) {
-      CheckBox chb = sender as CheckBox;
-      if (chb != null) {
-        RepeaterItem rep = chb.BindingContainer as RepeaterItem;
-        if (rep != null && rep.ItemIndex + 1 == DateTime.Now.Month) {
-          chb.Checked = true;
-        } else if (rep != null && rep.ItemIndex + 2016 == DateTime.Now.Year) {
-          chb.Checked = true;
+        protected void chb_OnDataBinding(object sender, EventArgs e) {
+            CheckBox chb = sender as CheckBox;
+            BLDateTime.FilterDateTimeCheckBoxes(chb);
         }
-      }
+
     }
-  }
 
 }

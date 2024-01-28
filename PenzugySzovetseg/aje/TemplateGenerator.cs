@@ -137,12 +137,19 @@ namespace PenzugySzovetseg {
         ddListYear.Items.Add("");
       }
 
-      for (int i = 0; i < AJEHelpers.Evek.Count; i++) {
-        ddListYear.Items.Add(AJEHelpers.Evek[i].ToString());
-        if (AJEHelpers.Evek[i] == DateTime.Now.Year) {
-          ddListYear.SelectedIndex = i;
-        }
-      }
+      //for (int i = 0; i < AJEYear.SupportedYears.Count; i++) {
+      //  ddListYear.Items.Add(AJEYear.SupportedYears[i].ToString());
+      //  if (AJEHelpers.Evek[i] == DateTime.Now.Year) {
+      //    ddListYear.SelectedIndex = i;
+      //  }
+      //}
+
+    foreach (var item in AJEYear.Items) {
+                ddListYear.Items.Add(item.ToString());
+                if (item.ID == DateTime.Now.Year) {
+                    ddListYear.SelectedIndex = item.ID;
+                }
+            }
 
       if (prefix == "dd") ddListYear.DataBinding += this.BindDataCalendar;
       container.Controls.Add(ddListYear);

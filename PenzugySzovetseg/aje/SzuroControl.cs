@@ -17,8 +17,8 @@ namespace PenzugySzovetseg.aje {
     }
 
     public void FilterEvek(Repeater repEvek) {
-      List<int> evek = AJEHelpers.Evek;
-      _FilterGeneral(repEvek, evek);
+      //var evek = AJEHelpers.Evek;
+      _FilterGeneral(repEvek, AJEYear.Items);
     }
 
     public void FilterVarosok(Repeater repVarosok) {
