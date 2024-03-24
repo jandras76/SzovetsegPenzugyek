@@ -164,23 +164,31 @@ namespace PenzugySzovetseg {
       return -1;
     }
 
-    protected override string _SpecialAddNewColumn(DateTime datum) {
+        protected override string _SpecialAddNewColumn(DateTime datum) {
 
-      DropDownList txt = (DropDownList)gridView.FooterRow.FindControl("inElszamoltIdoszak");
-      var c = Convert.ToInt32(txt.SelectedValue);
+            DropDownList txt = (DropDownList)gridView.FooterRow.FindControl("inElszamoltIdoszak");
+            var c = Convert.ToInt32(txt.SelectedValue);
 
-      if (c < 0) {
-        foreach (DataRow item in _FilteredElszamolasiIdoszakok().Rows) {
-          var el = AJEHelpers.CreateItemFromRow<ElszamolasIdoszakok>(item);
-          if (el.Ev == datum.Year && el.Negyedev == _Negyedev(datum.Month)) {
-            txt.SelectedValue = el.Id.ToString();
-            return "";
-          }
+            if (c < 0) {
+                foreach (DataRow item in _FilteredElszamolasiIdoszakok().Rows) {
+                    var el = AJEHelpers.CreateItemFromRow<ElszamolasIdoszakok>(item);
+                    if (el.Ev == datum.Year && el.Negyedev == _Negyedev(datum.Month)) {
+                        txt.SelectedValue = el.Id.ToString();
+                        return "";
+                    }
+                }
+            }
+            else {
+                foreach (DataRow item in _FilteredElszamolasiIdoszakok().Rows) {
+                    var el = AJEHelpers.CreateItemFromRow<ElszamolasIdoszakok>(item);
+                    if (c == el.Id) {
+                        return "";
+                    }
+                }
+            }
+
+            return "A megadott elszamolasi idoszak nem letezik, vagy le van mar zarva!";
         }
-      }
-
-      return "A megadott elszamolasi idoszak nem letezik, vagy le van mar zarva!";
-    }
 
     protected void chb_OnDataBinding(object sender, EventArgs e) {
       CheckBox chb = sender as CheckBox;
