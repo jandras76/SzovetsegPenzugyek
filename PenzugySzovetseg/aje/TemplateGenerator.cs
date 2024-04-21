@@ -202,7 +202,7 @@ namespace PenzugySzovetseg {
       if (prefix == "dd") {
         ddListDay.Items.Add("");
       }
-      for (int i = 1; i < 31; i++) {
+      for (int i = 1; i <= 31; i++) {
         ddListDay.Items.Add(i.ToString());
       }
       if (prefix == "dd") ddListDay.DataBinding += this.BindDataCalendar;
