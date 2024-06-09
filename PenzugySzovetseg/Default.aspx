@@ -77,7 +77,7 @@
                 <tr>
                     <td><asp:ImageButton ID="btnImgPDF" runat="server" ImageUrl="~/aje/pdf.gif" Visible="true" OnClick="btnImgPDF_Click"/></td>
                     <td><asp:CheckBox ID="chbIncludeTagdij" runat="server" /></td>
-                    <td><asp:Label runat="server" ID="Label6" Font-Bold="true" Text="Éves tagdíj hozzáadása a pdf kivonathoz"/></td>
+                    <td><asp:Label runat="server" ID="Label6" Font-Bold="true" Text="Éves tagdíj ('<%=PenzugySzovetseg.aje.Nyomtatas.Tagdij%>' CHF) hozzáadása a pdf kivonathoz"/></td>
                 </tr>
             </table>
             

@@ -16,9 +16,9 @@ namespace PenzugySzovetseg.aje {
   public class Nyomtatas {
 
     private readonly SqlLiteAccess m_sqlLiteAccess = new SqlLiteAccess();
-    private readonly int m_Tagdij = 25;
-
-    List<string> datumok = new List<string>() { "Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December" };
+    public static readonly int Tagdij = 40;
+    
+        List<string> datumok = new List<string>() { "Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December" };
 
     Document m_doc;
     public string Init(HttpRequest request) {
@@ -174,8 +174,8 @@ namespace PenzugySzovetseg.aje {
 
             int tagdijak = 0;
             if (includeTagdij) {
-              _AddTableCell(pdfTableTeljes, "Éves tagdíj: ");
-              tagdijak = (tagokSzama * m_Tagdij);
+              _AddTableCell(pdfTableTeljes, $"Éves tagdíj (tagonként {Tagdij} CHF): ");
+              tagdijak = (tagokSzama * Tagdij);
               _AddTableCell(pdfTableTeljes, tagdijak.ToString(), fontLeft, Element.ALIGN_RIGHT);
               _AddTableCell(pdfTableTeljes, "           ");
             }

@@ -36,7 +36,8 @@ namespace PenzugySzovetseg.aje {
         var rowIndex = ((GridViewRow)(((Button)e.CommandSource).NamingContainer)).RowIndex;
         string id = gridView.DataKeys[rowIndex ].Values[_GetDataKey()].ToString();
         var s = "update " + _GetTablaNev() + " set Zarolt=1 where " + _GetDataKey() + "='" + id + "'";
-        int result = sqlLiteAccess.ExecuteQuery(s);
+                string errorMsg;
+                int result = sqlLiteAccess.ExecuteQuery(s, out errorMsg);
 
         if (result == 1) {
           lblmsg.BackColor = Color.Blue;
@@ -45,7 +46,7 @@ namespace PenzugySzovetseg.aje {
         } else {
           lblmsg.BackColor = Color.Red;
           lblmsg.ForeColor = Color.White;
-          lblmsg.Text = id + ": A zárás sikertelen....." + s;
+          lblmsg.Text = id + ": A zárás sikertelen....." + s + $" Hiba: {errorMsg}";
         }
         gridView.EditIndex = -1;
         _LoadStores(_GetTablaNev());

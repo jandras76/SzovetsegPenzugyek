@@ -199,7 +199,8 @@ namespace PenzugySzovetseg {
       //colNameList.EndsWith()
 
       var s = "update " + _GetTablaNev() + " set " + colNameList + " where " + _GetDataKey() + "='" + id + "'";
-      int result = sqlLiteAccess.ExecuteQuery(s);
+            string errorMsg;
+            int result = sqlLiteAccess.ExecuteQuery(s, out errorMsg);
 
       if (result == 1) {
         lblmsg.BackColor = Color.Blue;
@@ -208,7 +209,7 @@ namespace PenzugySzovetseg {
       } else {
         lblmsg.BackColor = Color.Red;
         lblmsg.ForeColor = Color.White;
-        lblmsg.Text = id + ": A módositás nem sikerült....." + s;
+        lblmsg.Text = id + ": A módositás nem sikerült....." + s + $" Hiba: {errorMsg}";
       }
       gridView.EditIndex = -1;
       _LoadStores(_GetTablaNev());
@@ -221,7 +222,8 @@ namespace PenzugySzovetseg {
 
     protected void gridView_RowDeleting(object sender, GridViewDeleteEventArgs e) {
       string id = gridView.DataKeys[e.RowIndex].Values[_GetDataKey()].ToString();
-      int result = sqlLiteAccess.ExecuteQuery("delete from " + _GetTablaNev() + " where " + _GetDataKey() + "='" + id + "'");
+        string errorMsg;
+      int result = sqlLiteAccess.ExecuteQuery("delete from " + _GetTablaNev() + " where " + _GetDataKey() + "='" + id + "'", out errorMsg);
 
       _LoadStores(_GetTablaNev());
 
@@ -232,7 +234,7 @@ namespace PenzugySzovetseg {
       } else {
         lblmsg.BackColor = Color.Red;
         lblmsg.ForeColor = Color.White;
-        lblmsg.Text = id + "      törölése sikertelen.......    ";
+        lblmsg.Text = id + "      törölése sikertelen.......    " + $" Hiba: {errorMsg}";
       }
 
     }
@@ -336,7 +338,8 @@ namespace PenzugySzovetseg {
         }
 
         var s = "insert into " + _GetTablaNev() + "(" + colNameList + ") values(" + colValueList + ")";
-        int result = sqlLiteAccess.ExecuteQuery(s);
+                string errorMsg;
+                int result = sqlLiteAccess.ExecuteQuery(s, out errorMsg);
         if (result == 1) {
           _LoadStores(_GetTablaNev());
           lblmsg.BackColor = Color.Green;
@@ -345,7 +348,7 @@ namespace PenzugySzovetseg {
         } else {
           lblmsg.BackColor = Color.Red;
           lblmsg.ForeColor = Color.White;
-          lblmsg.Text = " Az új adat hozzáadása nem sikerült.....: " + s;
+          lblmsg.Text = " Az új adat hozzáadása nem sikerült.....: " + s + $" Hiba: {errorMsg}";
         }
       }
     }

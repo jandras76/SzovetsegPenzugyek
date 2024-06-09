@@ -64,8 +64,9 @@ namespace PenzugySzovetseg {
 
     }
 
-    public int ExecuteQuery(string txtQuery) {
+    public int ExecuteQuery(string txtQuery, out string errorMsg) {
       try {
+        errorMsg = string.Empty;
         ResetSetConnection();
 
         SqlCommand cmd = sql_con.CreateCommand();
@@ -73,6 +74,7 @@ namespace PenzugySzovetseg {
 
         return cmd.ExecuteNonQuery();
       } catch (Exception ex) {
+        errorMsg = ex.Message;
         return -1;
       } finally {
         sql_con.Close();
@@ -129,7 +131,8 @@ namespace PenzugySzovetseg {
 
     public void SaveDataTable(DataTable DT) {
       try {
-        ExecuteQuery(string.Format("DELETE FROM {0}", DT.TableName));
+                string errorMsg;
+                ExecuteQuery(string.Format("DELETE FROM {0}", DT.TableName), out errorMsg);
         ResetSetConnection();
         SqlCommand cmd = sql_con.CreateCommand();
         cmd.CommandText = string.Format("SELECT * FROM {0}", DT.TableName);
